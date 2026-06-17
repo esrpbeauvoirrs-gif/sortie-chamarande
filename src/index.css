@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  /* ═══ Couleur dynamique (overridée par JS pour personnalisation) ═══ */
+  /* Par défaut = STTDM Turquoise, mais changeable via paramètres */
+  --color-forest-50:  #eef9f9;
+  --color-forest-100: #d0efef;
+  --color-forest-200: #a3dfdf;
+  --color-forest-300: #6ec9c9;
+  --color-forest-400: #37C2C7;
+  --color-forest-500: #2daeb3;
+  --color-forest-600: #24969b;
+  --color-forest-700: #1f7a7e;
+  --color-forest-800: #1d6366;
+  --color-forest-900: #1b5355;
+
+  /* ═══ Palette STTDM fixe ═══ */
+  --color-turquoise:    #37C2C7;
+  --color-turquoise-soft: #87C4C5;
+  --color-rose-powder:  #E8CFCB;
+  --color-peche-pastel: #EFC0A8;
+  --color-beige-sable:  #F0D7BE;
+  --color-cream:        #F4F4F4;
+  --color-text-brown:   #6B5A5A;
+
+  /* ═══ Typographie STTDM ═══ */
+  --font-sans:    'Montserrat', sans-serif;
+  --font-display: 'Cinzel', serif;
+  --font-hand:    'Patrick Hand', cursive;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-cream);
+  color: #6B5A5A;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+/* ═══ Scrollbar ═══ */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(55,194,199,0.25); border-radius: 3px; }
+
+/* ═══ Animations ═══ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%      { transform: translateY(-6px); }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fade-in-up { animation: fadeInUp 0.5s ease-out; }
+.animate-float      { animation: float 3s ease-in-out infinite; }
+.animate-slide-in   { animation: slideIn 0.3s ease-out; }
+
+/* ═══ Chevron STTDM ═══ */
+.chevron-stripe {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 8px,
+    rgba(232,207,203,0.25) 8px,
+    rgba(232,207,203,0.25) 16px
+  );
+}
+
+/* ═══ Composants ═══ */
+.drawing-canvas { touch-action: none; cursor: crosshair; }
+
+.tab-active { position: relative; }
+.tab-active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 3px;
+  background: var(--color-forest-600);
+  border-radius: 2px;
+}
+
+/* ═══ Focus ═══ */
+button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--color-turquoise);
+  outline-offset: 2px;
+}
